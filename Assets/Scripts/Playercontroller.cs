@@ -19,7 +19,7 @@ public class Playercontroller : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown(KeyCode.E.ToString()))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Instantiate(hook, transform.position, Quaternion.identity);
         }
@@ -28,7 +28,7 @@ public class Playercontroller : MonoBehaviour
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
         // Handle jumping
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }

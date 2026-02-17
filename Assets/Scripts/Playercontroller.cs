@@ -19,10 +19,6 @@ public class Playercontroller : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Instantiate(hook, transform.position, Quaternion.identity);
-        }
         // Handle horizontal movement
         float moveInput = Input.GetAxis("Horizontal");
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);

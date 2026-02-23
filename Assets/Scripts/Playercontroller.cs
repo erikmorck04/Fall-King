@@ -11,10 +11,16 @@ public class Playercontroller : MonoBehaviour
     private bool isGrounded;
     private Rigidbody2D rb;
 
+    private Animator anim;
+    private SpriteRenderer spriteRend;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
+
+        anim = GetComponent<Animator>();
+        spriteRend = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -28,6 +34,22 @@ public class Playercontroller : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
+
+        // Player direction
+        if (moveInput > 0)
+        {
+            spriteRend.flipX = false;
+        }
+        else if (moveInput < 0)
+        {
+            spriteRend.flipX = true;
+        }
+
+        // animations
+        bool isWalking = moveInput != 0;
+        anim.SetBool("isWalking", isWalking);
+
+        anim.SetBool("isGrounded", isGrounded);
     }
 
     void OnCollisionEnter2D(Collision2D collision)

@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: energy
+  m_text: SlowMo cd
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -666,8 +666,7 @@ MonoBehaviour:
   timerText: {fileID: 157603330}
   maxEnergy: 3
   refillSpeed: 0.2
-  slowGravity: 0.5
-  normalGravity: 1
+  SlowMotionScale: 0.3
 --- !u!1 &1362299226
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,8 +697,8 @@ Transform:
   m_GameObject: {fileID: 1362299226}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.1424, z: 0}
+  m_LocalScale: {x: 1, y: 0.9525, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2038505379}
@@ -1406,37 +1405,45 @@ CompositeCollider2D:
   - m_Collider: {fileID: 1362299230}
     m_ColliderPaths:
     - - X: 60000000
-        Y: -39375000
+        Y: 28574998
+      - X: 40000000
+        Y: 28574998
+      - X: 40000000
+        Y: -9525000
+      - X: -20000000
+        Y: -9525000
+      - X: -20000000
+        Y: 28574998
+      - X: -40000000
+        Y: 28574998
+      - X: -40000000
+        Y: -28574998
       - X: 60000000
-        Y: 30000000
-      - X: 40000000
-        Y: 30000000
-      - X: 40000000
-        Y: -10000000
-      - X: -20000000
-        Y: -10000000
-      - X: -20000000
-        Y: 30000000
+        Y: -28574998
+    - - X: 60000000
+        Y: -37504688
+      - X: 60000000
+        Y: -28575000
       - X: -40000000
-        Y: 30000000
+        Y: -28575000
       - X: -40000000
-        Y: -38437500
+        Y: -36611720
       - X: -38437500
-        Y: -40000000
+        Y: -38100000
       - X: 59375000
-        Y: -40000000
+        Y: -38100000
   m_CompositePaths:
     m_Paths:
-    - - {x: 5.937489, y: -4}
-      - {x: 6, y: -3.9374893}
-      - {x: 5.999971, y: 3}
-      - {x: 4, y: 2.999971}
-      - {x: 3.9999704, y: -1}
-      - {x: -2, y: -0.9999706}
-      - {x: -2.0000293, y: 3}
-      - {x: -4, y: 2.999971}
-      - {x: -3.9999924, y: -3.8437576}
-      - {x: -3.8437393, y: -4}
+    - - {x: 5.9374895, y: -3.81}
+      - {x: 6, y: -3.7504575}
+      - {x: 5.999971, y: 2.8574998}
+      - {x: 4, y: 2.8574705}
+      - {x: 3.9999704, y: -0.9525}
+      - {x: -2, y: -0.9524706}
+      - {x: -2.0000293, y: 2.8574998}
+      - {x: -4, y: 2.8574705}
+      - {x: -3.9999921, y: -3.6611795}
+      - {x: -3.8437397, y: -3.81}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
@@ -1557,7 +1564,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1921368782
 Canvas:
   m_ObjectHideFlags: 0
@@ -1567,7 +1574,7 @@ Canvas:
   m_GameObject: {fileID: 1921368779}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1588,19 +1595,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1921368779}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 157603329}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 550229883}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.2}
+  m_SizeDelta: {x: 826.5, y: 443}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2038505377
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,6 +1722,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1762969083121191355, guid: 28676f8878367f24bb0e4df3f36a26f7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 540175720}
+    - targetCorrespondingSourceObject: {fileID: 1762969083121191355, guid: 28676f8878367f24bb0e4df3f36a26f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1921368783}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3170083424803295794, guid: 28676f8878367f24bb0e4df3f36a26f7, type: 3}
       insertIndex: -1
@@ -1728,5 +1738,4 @@ SceneRoots:
   - {fileID: 7622706941478477051}
   - {fileID: 2038505379}
   - {fileID: 1591290531}
-  - {fileID: 1921368783}
   - {fileID: 458408930}

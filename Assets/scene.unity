@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 376525923}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 1362299230}
   - component: {fileID: 1362299232}
   - component: {fileID: 1362299231}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tilemap
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1299,7 +1299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2038505377}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1323,6 +1323,14 @@ PrefabInstance:
       propertyPath: lineRenderer
       value: 
       objectReference: {fileID: 540175719}
+    - target: {fileID: -3920983179803514837, guid: 28676f8878367f24bb0e4df3f36a26f7, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 6538899707445515032, guid: e81ab4e5fcc0eac46b283d482ffab8b3, type: 3}
+    - target: {fileID: -3920983179803514837, guid: 28676f8878367f24bb0e4df3f36a26f7, type: 3}
+      propertyPath: grappleableMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 1762969083121191355, guid: 28676f8878367f24bb0e4df3f36a26f7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1384,5 +1392,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 694864886}
   - {fileID: 7622706941478477051}
-  - {fileID: 2038505379}
   - {fileID: 1591290531}
+  - {fileID: 2038505379}

@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class collision : MonoBehaviour
+public class CollisionWithObject : MonoBehaviour
 {
-    public GameObject player;
-    public Transform respawnPoint;
+    [SerializeField] private GameObject player;
+    [SerializeField] private Transform respawnPoint;
     void Start()
     {
         
@@ -15,11 +15,16 @@ public class collision : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             player.transform.position = respawnPoint.position;
+            Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
+            if(rb != null){
+                rb.linearVelocity= Vector2.zero;
+                rb.angularVelocity = 0f;
+            }
         }
     }
 }

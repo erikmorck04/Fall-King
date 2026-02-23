@@ -9,18 +9,18 @@ public class SlowController : MonoBehaviour
     [SerializeField] TextMeshProUGUI timerText;
 
 
-    [Header("Inställningar")]
+    [Header("Instï¿½llningar")]
     [SerializeField] private float maxEnergy = 3.0f;
     [SerializeField] private float refillSpeed = 0.05f;
-    [SerializeField] private float slowGravity = 0.2f;
-    [SerializeField] private float normalGravity = 1.0f;
+
+    [Range(0.1f,1.0f)]
+    [SerializeField] private float SlowMotionScale = 0.3f;
+
 
     private float currentEnergy;
-    private Rigidbody2D rb;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         currentEnergy = maxEnergy;
     }
 
@@ -28,33 +28,36 @@ public class SlowController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.F) && currentEnergy > 0)
         {
-            SlowFall();
+            SlowMotion();
         }
         else
         {
-            NormalFall();
+            NormalSpeed();
         }
 
 
         UpdateTimerText();
     }
 
-    void SlowFall()
+    void SlowMotion()
     {
-        rb.gravityScale = slowGravity;
+        Time.timeScale = SlowMotionScale;
 
-        currentEnergy -= Time.deltaTime;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+
+        currentEnergy -= Time.unscaledDeltaTime;
 
         if(currentEnergy < 0) currentEnergy = 0;
 
     }
-    void NormalFall()
+    void NormalSpeed()
     {
-        rb.gravityScale = normalGravity;
+        Time.timeScale = 1.0f;
+        Time.fixedDeltaTime = 0.02f;
 
         if(currentEnergy < maxEnergy)
         {
-            currentEnergy += Time.deltaTime * refillSpeed;
+            currentEnergy += Time.unscaledDeltaTime * refillSpeed;
         }
     }
 
@@ -68,4 +71,4 @@ public class SlowController : MonoBehaviour
         timerText.color = (currentEnergy <= 0) ? Color.red : Color.green;
 
     }
-}
+}   

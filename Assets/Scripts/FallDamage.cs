@@ -15,8 +15,13 @@ public class FallDamage : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Vector2 conttactNormalen = collision.GetContact(0).normal;
+
+        bool hitFloor = conttactNormalen.y > 0.5f;
+        
         float ImpactSpeed = collision.relativeVelocity.y;
-        if (ImpactSpeed > threshold)
+
+        if (hitFloor && ImpactSpeed > threshold)
         {
             Respawn();
         }

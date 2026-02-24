@@ -191,10 +191,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f73e312272334804eb37894fed44ac98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 1762969083121191355}
   grappleableMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   maxDistance: 20
   hookSpeed: 20
   lineRenderer: {fileID: 0}

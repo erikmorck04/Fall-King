@@ -859,8 +859,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 157603330}
-  maxEnergy: 3
-  refillSpeed: 0.2
+  SlowMotionDuration: 2
+  SlowMotionCooldown: 10
   SlowMotionScale: 0.3
 --- !u!114 &1032711800
 MonoBehaviour:

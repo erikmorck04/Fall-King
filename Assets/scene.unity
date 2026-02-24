@@ -713,8 +713,7 @@ MonoBehaviour:
   timerText: {fileID: 157603330}
   maxEnergy: 3
   refillSpeed: 0.2
-  slowGravity: 0.5
-  normalGravity: 1
+  SlowMotionScale: 0.3
 --- !u!95 &1032711800
 Animator:
   serializedVersion: 7
@@ -8409,7 +8408,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1465765621933458353, guid: 28676f8878367f24bb0e4df3f36a26f7, type: 3}
       propertyPath: m_GravityScale
-      value: 30
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1465765621933458353, guid: 28676f8878367f24bb0e4df3f36a26f7, type: 3}
       propertyPath: m_SleepingMode

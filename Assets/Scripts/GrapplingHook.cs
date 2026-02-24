@@ -15,6 +15,7 @@ public class GrapplingHook : MonoBehaviour
     private bool isGrappling = false;
 
     public GameObject projectilePrefab;
+    public GameObject projectile;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();   
@@ -25,6 +26,17 @@ public class GrapplingHook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        lineRenderer.SetPosition(0, ToCustomVector3(transform.position));
+        if (this.projectile != null)
+        {
+            //lineRenderer.SetPosition(0, ToCustomVector3(firePoint.position));
+            lineRenderer.SetPosition(1, ToCustomVector3(this.projectile.transform.position));
+        }
+        else
+        {
+            StopGrapple();
+        }
+
         //Debug.Log(getDir());
         if (UnityEngine.Input.GetKeyDown(KeyCode.E))
         {
@@ -34,7 +46,9 @@ public class GrapplingHook : MonoBehaviour
             }
             else
             {
-                StopGrapple();
+
+                
+                //StopGrapple();
             }
         }
 
@@ -49,29 +63,36 @@ public class GrapplingHook : MonoBehaviour
     }
     void StartGrapple()
     {
-  
+        isGrappling=true;
+        grapplePoint= transform.position;
         Vector2 dir = getDir().normalized;
         
         GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-        proj.GetComponent<HookScript>().SetDirection(dir);
         
+        proj.GetComponent<HookScript>().SetDirection(dir);
+        proj.GetComponent<HookScript>().spawner = this;
+        lineRenderer.enabled = true;
+        
+        this.projectile= proj;
+
+        lineRenderer.SetPosition(1, ToCustomVector3(proj.transform.position));
+        Debug.Log("proj"+ proj.transform.position);
+       
+
         //proj.GetComponent<HookScript>().SetDirection(
     }
     void StopGrapple()
     {
         isGrappling = false;
-        rb.linearVelocity = Vector2.zero;
         lineRenderer.enabled = false;
+        //rb.linearVelocity = Vector2.zero;
+
     }
 
     Vector2 getDir()
     {
         float horizontal = UnityEngine.Input.GetAxis("Horizontal");
         float vertical = UnityEngine.Input.GetAxis("Vertical");
-        //if (Input.GetKey(KeyCode.A)) x += -1f;
-        //if (Input.GetKey(KeyCode.D)) x += 1f;
-        //if (Input.GetKey(KeyCode.S)) y += -1f;
-        //if (Input.GetKey(KeyCode.W)) y += 1000f;
 
         Vector2 myInput = new Vector2(horizontal, vertical);
         Debug.Log("Direction set to: " + myInput.normalized);
@@ -100,5 +121,8 @@ public class GrapplingHook : MonoBehaviour
         return myInput.normalized;
 
     }
-
+    public Vector3 ToCustomVector3(Vector2 vec2)
+    {
+        return new Vector3(vec2.x, vec2.y, 0f);
+    }
 }

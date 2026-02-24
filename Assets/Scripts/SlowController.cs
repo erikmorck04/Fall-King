@@ -10,65 +10,83 @@ public class SlowController : MonoBehaviour
 
 
     [Header("Inst�llningar")]
-    [SerializeField] private float maxEnergy = 3.0f;
-    [SerializeField] private float refillSpeed = 0.05f;
+    [SerializeField] private float SlowMotionDuration = 2;
+    [SerializeField] private float SlowMotionCooldown = 10;
 
     [Range(0.1f,1.0f)]
     [SerializeField] private float SlowMotionScale = 0.3f;
 
 
-    private float currentEnergy;
-
+    private bool abilityOn;
+    private float currentCooldown;
+    private float duration;
     void Start()
     {
-        currentEnergy = maxEnergy;
+        abilityOn = false;
+        currentCooldown = 0;
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.F) && currentEnergy > 0)
+        if (!abilityOn)
         {
-            SlowMotion();
+            if(currentCooldown > 0)
+            {
+                currentCooldown -= Time.unscaledDeltaTime;
+            }
+            
+            if (Input.GetKey(KeyCode.F) && currentCooldown <= 0 )
+            {
+                SlowMotion();
+            }
+
+        UpdateTimerText();
+
         }
         else
         {
-            NormalSpeed();
+            duration += Time.unscaledDeltaTime;
+            if (SlowMotionDuration <= duration)
+            {
+                NormalSpeed();
+            }
+
         }
-
-
         UpdateTimerText();
+
+
     }
 
     void SlowMotion()
     {
+        abilityOn = true;
+        duration = 0;
         Time.timeScale = SlowMotionScale;
-
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
-
-        currentEnergy -= Time.unscaledDeltaTime;
-
-        if(currentEnergy < 0) currentEnergy = 0;
+       
 
     }
     void NormalSpeed()
     {
+        abilityOn = false;
+        currentCooldown = SlowMotionCooldown;
         Time.timeScale = 1.0f;
         Time.fixedDeltaTime = 0.02f;
-
-        if(currentEnergy < maxEnergy)
-        {
-            currentEnergy += Time.unscaledDeltaTime * refillSpeed;
-        }
     }
 
 
     void UpdateTimerText()
     {
         if(timerText == null) { return; }
-
-
-        timerText.text = "Energy: " + currentEnergy.ToString("F1");
-        timerText.color = (currentEnergy <= 0) ? Color.red : Color.green;
+        if (abilityOn)
+        {
+            timerText.text = "ACTIVE";
+        }
+        else
+        {
+            timerText.text = (currentCooldown <= 0) ? "READY" : currentCooldown.ToString("F1");    
+        }
+        
 
     }
 }   

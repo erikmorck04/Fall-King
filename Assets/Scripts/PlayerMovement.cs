@@ -3,9 +3,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
-    private float speed = 5f;
+    private float speed = 50f;
     private float jumpingPower = 20f;
-    private bool isFacingRight = true;
+    public bool isFacingRight = true;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -32,7 +32,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+        rb.AddForce(new Vector2(horizontal * speed, 0));
+        rb.linearVelocity = (new Vector2(rb.linearVelocity.x, rb.linearVelocity.y));
+        //rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
     }
     
     private void Flip()

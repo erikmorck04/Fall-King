@@ -6,19 +6,14 @@ public class GrapplingHook : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public Transform firePoint;
     public LayerMask grappleableMask;
-    public float maxDistance = 20f;
-    public float hookSpeed = 20f;
     public LineRenderer lineRenderer;
-
-    private Rigidbody2D rb;
-    private Vector2 grapplePoint;
     private bool isGrappling = false;
 
     public GameObject projectilePrefab;
     public GameObject projectile;
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();   
+        //rb = GetComponent<Rigidbody2D>();   
         lineRenderer.positionCount = 2;
         lineRenderer.enabled = false;
     }
@@ -26,18 +21,17 @@ public class GrapplingHook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        lineRenderer.SetPosition(0, ToCustomVector3(transform.position));
+
+        lineRenderer.SetPosition(0, ToCustomVector3(transform.position)); //Sätter ena line saken till din pos
         if (this.projectile != null)
         {
-            //lineRenderer.SetPosition(0, ToCustomVector3(firePoint.position));
+           
             lineRenderer.SetPosition(1, ToCustomVector3(this.projectile.transform.position));
         }
         else
         {
             StopGrapple();
         }
-
-        //Debug.Log(getDir());
         if (UnityEngine.Input.GetKeyDown(KeyCode.E))
         {
             if (!isGrappling)
@@ -46,33 +40,18 @@ public class GrapplingHook : MonoBehaviour
             }
             else
             {
-
-                
-                //StopGrapple();
+                StopGrapple();
             }
-        }
-
-        if (isGrappling)
-        {
-            //lineRenderer.SetPosition(0, firePoint.position);
-            //lineRenderer.SetPosition(1, grapplePoint);
-
-            //Vector2 grappleDir = (grapplePoint - (Vector2)firePoint.position).normalized;
-            //rb.linearVelocity = grappleDir * hookSpeed;
         }
     }
     void StartGrapple()
     {
         isGrappling=true;
-        grapplePoint= transform.position;
         Vector2 dir = getDir().normalized;
-        
         GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-        
         proj.GetComponent<HookScript>().SetDirection(dir);
         proj.GetComponent<HookScript>().spawner = this;
         lineRenderer.enabled = true;
-        
         this.projectile= proj;
 
         lineRenderer.SetPosition(1, ToCustomVector3(proj.transform.position));
@@ -89,38 +68,50 @@ public class GrapplingHook : MonoBehaviour
 
     }
 
-    Vector2 getDir()
+    Vector2 getDir() //Kod för att få en riktning från dina keys
     {
+        //Hämtar wasd input
         float horizontal = UnityEngine.Input.GetAxis("Horizontal");
         float vertical = UnityEngine.Input.GetAxis("Vertical");
 
+        //Vector på input
         Vector2 myInput = new Vector2(horizontal, vertical);
         Debug.Log("Direction set to: " + myInput.normalized);
 
-        // is it outside the dead zone?
+        //Kollar ifall det inte är nåt fel med inputen
         if (myInput.magnitude > 0.1f)
         {
-            // get the angle
+            // Angle av vektorn
             float angle = Mathf.Atan2(myInput.y, myInput.x) * Mathf.Rad2Deg;
 
-            // round the angle to 45 steps
+            // gör det till 45 grader
             angle = Mathf.Round(angle / 45.0f) * 45.0f;
 
-            // cos/sin give us x/y values again (on the unit circle, so -1 to 1 range)
+            // Konverterar om det till bättre cos sin grejer
             float horizontalOut = Mathf.Round(Mathf.Cos(angle * Mathf.Deg2Rad));
             float verticalOut = Mathf.Round(Mathf.Sin(angle * Mathf.Deg2Rad));
 
-            // create resulting input, now snapped to 8 directions
+            //Ny vektor
             myInput = new Vector2(horizontalOut, verticalOut);
         }
         else
         {
-            // zero, or we could otherwise interpret this as "no input"
-            myInput = Vector2.right;
+            //Här är det ifall man inte trycker ner nåt, isåfall kolalr den var man kollar nånstans
+            if (this.GetComponent<PlayerMovement>().isFacingRight)
+            {
+                myInput = Vector2.right;
+            }
+            else
+            {
+                myInput = Vector2.left;
+            }
+                
         }
+        //Normaliserar inputen (behövs inte riktigt)
         return myInput.normalized;
 
     }
+    //V2->V3
     public Vector3 ToCustomVector3(Vector2 vec2)
     {
         return new Vector3(vec2.x, vec2.y, 0f);

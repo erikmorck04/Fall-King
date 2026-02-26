@@ -7,4 +7,13 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(1);
     }
+    
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            SceneManager.LoadSceneAsync(1);
+        }
+    }
 }

@@ -3,9 +3,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
-    private float speed = 50f;
+    private float speed = 30f;
     private float jumpingPower = 20f;
     private float maxSpeed = 10f;
+    private float maxFallSpeed = 20f;
     public bool isFacingRight = true;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -36,13 +37,14 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(new Vector2(horizontal * speed, 0));
         
         float clampedX = Mathf.Clamp(rb.linearVelocity.x, -maxSpeed, maxSpeed);
+        float clampedY = Mathf.Max(rb.linearVelocity.y, -maxFallSpeed);
         if(this.IsGrounded())
         {
-            rb.linearVelocity = new Vector2(clampedX * 0.85f, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(clampedX * 0.85f, clampedY);
         }
         else
         {
-            rb.linearVelocity = new Vector2(clampedX, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(clampedX, clampedY);
         }
     }
     

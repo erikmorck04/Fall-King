@@ -24127,6 +24127,7 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+<<<<<<< HEAD
     - target: {fileID: -3920983179803514837, guid: 28676f8878367f24bb0e4df3f36a26f7, type: 3}
       propertyPath: grappleableMask.m_Bits
       value: 512
@@ -24138,6 +24139,11 @@ PrefabInstance:
     - target: {fileID: 1762969083121191355, guid: 28676f8878367f24bb0e4df3f36a26f7, type: 3}
       propertyPath: m_LocalScale.y
       value: 3
+=======
+    - target: {fileID: 1465765621933458353, guid: 28676f8878367f24bb0e4df3f36a26f7, type: 3}
+      propertyPath: m_GravityScale
+      value: 4
+>>>>>>> movementtest
       objectReference: {fileID: 0}
     - target: {fileID: 1762969083121191355, guid: 28676f8878367f24bb0e4df3f36a26f7, type: 3}
       propertyPath: m_LocalPosition.x

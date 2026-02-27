@@ -3,9 +3,11 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
-    private float speed = 5f;
+    private float speed = 40f;
     private float jumpingPower = 20f;
-    private bool isFacingRight = true;
+    private float maxSpeed = 10f;
+    private float maxFallSpeed = 30f;
+    public bool isFacingRight = true;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -32,7 +34,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+        rb.AddForce(new Vector2(horizontal * speed, 0));
+        
+        float clampedX = Mathf.Clamp(rb.linearVelocity.x, -maxSpeed, maxSpeed);
+        float clampedY = Mathf.Max(rb.linearVelocity.y, -maxFallSpeed);
+        if(this.IsGrounded())
+        {
+            rb.linearVelocity = new Vector2(clampedX * 0.85f, clampedY);
+        }
+        else
+        {
+            rb.linearVelocity = new Vector2(clampedX, clampedY);
+        }
     }
     
     private void Flip()

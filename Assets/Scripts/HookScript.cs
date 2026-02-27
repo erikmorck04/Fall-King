@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HookScript : MonoBehaviour
 {
-    public float speed = 500f;
+    public float speed = 40f;
     public float lifetime = 1.5f;
     public GrapplingHook spawner;
 

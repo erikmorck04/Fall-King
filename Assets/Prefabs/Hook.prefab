@@ -106,10 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cdec0ed7ba54604d8c1d8be1173a71a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 30
   lifetime: 3
-  throwforce: 20
-  firePoint: {fileID: 408803638015899390}
   spawner: {fileID: 0}
 --- !u!212 &2911864163321908514
 SpriteRenderer:

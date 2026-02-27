@@ -485,7 +485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1146791907}
-  yOffset: -2
+  yOffset: -3
   smoothSpeed: 15
 --- !u!1 &717964005 stripped
 GameObject:
@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RespawnPoint: {fileID: 2046670175}
-  threshold: 60
+  threshold: 40
 --- !u!1 &1362299226
 GameObject:
   m_ObjectHideFlags: 0

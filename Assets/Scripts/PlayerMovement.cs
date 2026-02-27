@@ -3,10 +3,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
-    private float speed = 30f;
+    private float speed = 40f;
     private float jumpingPower = 20f;
     private float maxSpeed = 10f;
-    private float maxFallSpeed = 20f;
+    private float maxFallSpeed = 30f;
     public bool isFacingRight = true;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;

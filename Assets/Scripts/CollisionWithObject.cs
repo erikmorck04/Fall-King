@@ -2,27 +2,31 @@ using UnityEngine;
 
 public class CollisionWithObject : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
     [SerializeField] private Transform respawnPoint;
+    [SerializeField] private GameObject player;
+
+
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    }
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.gameObject.CompareTag("Player"))
+
+        
+        if (collision.gameObject.CompareTag("KillPlayer"))
         {
             player.transform.position = respawnPoint.position;
-            Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
-            if(rb != null){
-                rb.linearVelocity= Vector2.zero;
+            Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector2.zero;
                 rb.angularVelocity = 0f;
             }
         }

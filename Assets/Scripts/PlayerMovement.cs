@@ -4,7 +4,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
     private float speed = 60f;
-    private float jumpingPower = 20f;
+    private float jumpingPower = 12f;
     private float maxSpeed = 10f;
     private float maxFallSpeed = 50f;
     public bool isFacingRight = true;

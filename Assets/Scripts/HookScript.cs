@@ -32,6 +32,8 @@ public class HookScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Player")) return;
+
         if (hasHit) return; // Förhindra att den triggas flera gånger
 
         // Dubbelkolla gärna så att den bara fastnar på "Grappleable" väggar

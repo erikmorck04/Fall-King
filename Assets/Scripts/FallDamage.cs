@@ -10,9 +10,13 @@ public class FallDamage : MonoBehaviour
     // Ny variabel för att minnas hur snabbt vi föll
     private float fallSpeedBeforeCollision;
 
+    private GrapplingHook grapplingHook;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        grapplingHook = GetComponent<GrapplingHook>();
     }
 
     void FixedUpdate()
@@ -48,6 +52,12 @@ public class FallDamage : MonoBehaviour
 
     private void Respawn()
     {
+
+        if (grapplingHook != null)
+        {
+            grapplingHook.StopGrapple();
+        }
+
         transform.position = RespawnPoint.position;
         rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0f;

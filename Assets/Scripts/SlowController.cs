@@ -35,7 +35,7 @@ public class SlowController : MonoBehaviour
                 currentCooldown -= Time.unscaledDeltaTime;
             }
             
-            if (Input.GetKey(KeyCode.F) && currentCooldown <= 0 )
+            if (Input.GetKey(KeyCode.F) && currentCooldown <= 0 && !PauseMenu.isPaused)
             {
                 SlowMotion();
             }

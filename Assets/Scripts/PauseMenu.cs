@@ -5,7 +5,7 @@ public class PauseMenu : MonoBehaviour
 {
 
     public  GameObject PausePanel;
-    private bool isPaused;
+    public static bool isPaused;
     
     void Start()
     {
@@ -47,5 +47,19 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
 
         SceneManager.LoadSceneAsync(0);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void ToSelectLevel()
+    {
+        PausePanel.SetActive(false);
+        Time.timeScale = 1f;
+        isPaused = false;
+
+        SceneManager.LoadSceneAsync(1);
     }
 }

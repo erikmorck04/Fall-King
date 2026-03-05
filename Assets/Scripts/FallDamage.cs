@@ -52,8 +52,6 @@ public class FallDamage : MonoBehaviour
 
     private void Respawn()
     {
-        if (LevelStats.Instance != null)
-            LevelStats.Instance.AddDeath();
 
         if (grapplingHook != null)
         {

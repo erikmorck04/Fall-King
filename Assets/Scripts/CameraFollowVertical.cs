@@ -19,7 +19,7 @@ public class CameraFollow : MonoBehaviour
             float targetY = player.position.y + yOffset;
 
             // 2. Glid mjukt från kamerans nuvarande höjd till den nya höjden (targetY)
-            float smoothedY = Mathf.Lerp(transform.position.y, targetY, smoothSpeed * Time.unscaledDeltaTime);
+            float smoothedY = Mathf.Lerp(transform.position.y, targetY, smoothSpeed * Time.deltaTime);
 
             // 3. Sätt positionen! Vi behåller kamerans egen X (låst i sidled) och uppdaterar bara Y.
             transform.position = new Vector3(transform.position.x, smoothedY, transform.position.z);

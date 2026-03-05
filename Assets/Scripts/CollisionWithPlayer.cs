@@ -19,6 +19,9 @@ public class CollisionWithPlayer : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            if (LevelStats.Instance != null)
+                LevelStats.Instance.AddDeath();
+
             player.transform.position = respawnPoint.position;
             Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
             if(rb != null){

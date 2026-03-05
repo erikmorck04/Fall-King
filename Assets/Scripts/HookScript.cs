@@ -7,7 +7,7 @@ public class HookScript : MonoBehaviour
     public GrapplingHook spawner;
 
     private Vector2 direction;
-    private float max_dist = 10f;
+    private float max_dist = 20f;
     private Vector2 start;
     private Rigidbody2D rb;
     private bool hasHit = false;
@@ -22,7 +22,7 @@ public class HookScript : MonoBehaviour
     {
         this.direction = dir.normalized;
         rb.AddForce(dir.normalized*2000f);
-        Destroy(gameObject, lifetime); // Förstörs om den flyger i 1.5 sek utan att träffa
+        Destroy(gameObject, lifetime); // Fï¿½rstï¿½rs om den flyger i 1.5 sek utan att trï¿½ffa
     }
 
     void FixedUpdate()
@@ -31,7 +31,7 @@ public class HookScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        // Rör sig bara framåt om den inte har träffat något än
+        // Rï¿½r sig bara framï¿½t om den inte har trï¿½ffat nï¿½got ï¿½n
         //if (!hasHit)
         //{
         //    rb.linearVelocity = direction * speed;
@@ -42,15 +42,15 @@ public class HookScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player")) return;
 
-        if (hasHit) return; // Förhindra att den triggas flera gånger
+        if (hasHit) return; // Fï¿½rhindra att den triggas flera gï¿½nger
 
-        // Dubbelkolla gärna så att den bara fastnar på "Grappleable" väggar
+        // Dubbelkolla gï¿½rna sï¿½ att den bara fastnar pï¿½ "Grappleable" vï¿½ggar
         // if ((grappleableMask.value & (1 << collision.gameObject.layer)) > 0)
 
         hasHit = true;
         rb.linearVelocity = Vector2.zero; // Stanna kroken
 
-        // Säg till spelaren att börja dras mot denna position
+        // Sï¿½g till spelaren att bï¿½rja dras mot denna position
         if (spawner != null)
         {
             spawner.StartPull(transform.position);

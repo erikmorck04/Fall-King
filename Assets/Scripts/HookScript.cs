@@ -7,27 +7,35 @@ public class HookScript : MonoBehaviour
     public GrapplingHook spawner;
 
     private Vector2 direction;
+    private float max_dist = 10f;
+    private Vector2 start;
     private Rigidbody2D rb;
     private bool hasHit = false;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        start = transform.position;
     }
 
     public void SetDirection(Vector2 dir)
     {
         this.direction = dir.normalized;
+        rb.AddForce(dir.normalized*2000f);
         Destroy(gameObject, lifetime); // Förstörs om den flyger i 1.5 sek utan att träffa
     }
 
     void FixedUpdate()
     {
-        // Rör sig bara framåt om den inte har träffat något än
-        if (!hasHit)
+        if (Vector2.Distance(start, transform.position) > max_dist)
         {
-            rb.linearVelocity = direction * speed;
+            Destroy(gameObject);
         }
+        // Rör sig bara framåt om den inte har träffat något än
+        //if (!hasHit)
+        //{
+        //    rb.linearVelocity = direction * speed;
+        //}
     }
 
     void OnCollisionEnter2D(Collision2D collision)

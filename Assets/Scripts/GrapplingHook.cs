@@ -57,16 +57,23 @@ public class GrapplingHook : MonoBehaviour
         // 3. Uppdatera linjen
         if (isGrappling)
         {
-            lineRenderer.SetPosition(0, transform.position);
+           
 
             if (currentProjectile != null)
             {
+                lineRenderer.SetPosition(0, transform.position);
                 lineRenderer.SetPosition(1, currentProjectile.transform.position);
             }
             else if (isPulling)
             {
+                lineRenderer.SetPosition(0, transform.position);
                 // Om projektilen är borta men vi fortfarande dras, rita till target
                 lineRenderer.SetPosition(1, pullTarget);
+            }
+            else
+            {
+                lineRenderer.enabled = false;
+                isGrappling= false;
             }
         }
     }

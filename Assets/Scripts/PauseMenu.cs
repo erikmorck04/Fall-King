@@ -48,4 +48,18 @@ public class PauseMenu : MonoBehaviour
 
         SceneManager.LoadSceneAsync(0);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void ToSelectLevel()
+    {
+        PausePanel.SetActive(false);
+        Time.timeScale = 1f;
+        isPaused = false;
+
+        SceneManager.LoadSceneAsync(1);
+    }
 }

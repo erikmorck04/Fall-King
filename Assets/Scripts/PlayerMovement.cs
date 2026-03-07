@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public bool canMove = false;
+    public bool canMove = true;
     private float horizontal;
     private float speed = 60f;
     private float jumpingPower = 12f;

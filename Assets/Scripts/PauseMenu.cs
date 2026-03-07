@@ -4,9 +4,9 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
 
-    public  GameObject PausePanel;
-    private bool isPaused;
-    
+    public GameObject PausePanel;
+    public static bool isPaused;
+
     void Start()
     {
         //PausePanel.SetActive(false);
@@ -14,9 +14,9 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(isPaused)
+            if (isPaused)
             {
                 ResumeGame();
             }
@@ -47,5 +47,19 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
 
         SceneManager.LoadSceneAsync(0);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void ToSelectLevel()
+    {
+        PausePanel.SetActive(false);
+        Time.timeScale = 1f;
+        isPaused = false;
+
+        SceneManager.LoadSceneAsync(1);
     }
 }

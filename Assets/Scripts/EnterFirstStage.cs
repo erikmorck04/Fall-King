@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement; // Måste vara med för att byta scener!
 
-// Observera att jag bytte namn här så det matchar din fil (EnterFirstStage.cs)
-public class EnterFirstStage : MonoBehaviour
+public class LevelExit : MonoBehaviour
 {
     // Skriv in exakt det namn du döpte din nästa scen till
     public string nextLevelName = "scene";

@@ -1940,8 +1940,9 @@ GameObject:
   - component: {fileID: 1230391285}
   - component: {fileID: 1230391287}
   - component: {fileID: 1230391286}
+  - component: {fileID: 1230391288}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: DeathCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2065,6 +2066,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230391284}
   m_CullTransparentMesh: 1
+--- !u!114 &1230391288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230391284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4273fc706097f94b810585420412f25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathText: {fileID: 1230391286}
 --- !u!1 &1262750172
 GameObject:
   m_ObjectHideFlags: 0
@@ -4147,7 +4161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6771794405617656735, guid: f75b7e1f18c33a14e9df0711e3d84f20, type: 3}
       propertyPath: threshold
-      value: 33
+      value: 32.5
       objectReference: {fileID: 0}
     - target: {fileID: 6771794405617656735, guid: f75b7e1f18c33a14e9df0711e3d84f20, type: 3}
       propertyPath: RespawnPoint
@@ -4155,7 +4169,7 @@ PrefabInstance:
       objectReference: {fileID: 2046670175}
     - target: {fileID: 6771794405617656735, guid: f75b7e1f18c33a14e9df0711e3d84f20, type: 3}
       propertyPath: damageMultiplier
-      value: 4.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7366462043000476270, guid: f75b7e1f18c33a14e9df0711e3d84f20, type: 3}
       propertyPath: timerText

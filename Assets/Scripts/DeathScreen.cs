@@ -41,11 +41,9 @@ public class DeathScreen : MonoBehaviour
 
     public void Respawn()
     {
-        // Track deaths
         if (LevelStats.Instance != null)
             LevelStats.Instance.AddDeath();
 
-        // Reset allt
         if (grapplingHook != null) grapplingHook.StopGrapple();
 
         playerHealth.HealPlayer();

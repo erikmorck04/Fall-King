@@ -1,33 +1,42 @@
 using UnityEngine;
 
-public class ParallaxEffect : MonoBehaviour
+public class VerticalParallax : MonoBehaviour
 {
     [Header("Inställningar")]
-    public float parallaxFactor; // 0 = rör sig inte alls, 1 = följer kameran helt
+    public float parallaxFactor; // 0 = fastnar på skärmen, 1 = står stilla i världen
 
     private Transform cam;
-    private Vector3 lastCameraPosition;
+    private float startPosY;
+    private float height;
+    public float yOffset = -10f;
 
     void Start()
     {
-        // Hittar din Main Camera automatiskt
-        if (Camera.main != null)
-        {
-            cam = Camera.main.transform;
-            lastCameraPosition = cam.position;
-        }
+        cam = Camera.main.transform;
+        startPosY = transform.position.y + yOffset;
+
+        // Hämtar höjden på din Sprite (viktigt att Draw Mode är Tiled eller Single)
+        height = GetComponent<SpriteRenderer>().bounds.size.y;
     }
 
-    void LateUpdate()
+    void Update()
     {
-        if (cam == null) return;
+        // Räkna ut hur långt kameran har rört sig i Y-led
+        float dist = (cam.position.y * parallaxFactor);
 
-        // Räknar ut hur mycket kameran har rört sig sedan förra framen
-        Vector3 deltaMovement = cam.position - lastCameraPosition;
+        // Flytta bakgrunden med kameran (men ignorera X)
+        transform.position = new Vector3(transform.position.x, startPosY + dist, transform.position.z);
 
-        // Flyttar detta lager en viss procent av kamerans rörelse
-        transform.position += new Vector3(deltaMovement.x * parallaxFactor, deltaMovement.y * parallaxFactor, 0);
-
-        lastCameraPosition = cam.position;
+        // Den magiska oändliga loopen!
+        // Om kameran åker för långt ner, flytta ner startpositionen
+        float temp = (cam.position.y * (1 - parallaxFactor));
+        if (temp < startPosY - height)
+        {
+            startPosY -= height;
+        }
+        else if (temp > startPosY + height)
+        {
+            startPosY += height;
+        }
     }
 }

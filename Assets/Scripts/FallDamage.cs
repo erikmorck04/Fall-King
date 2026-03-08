@@ -60,6 +60,15 @@ public class FallDamage : MonoBehaviour
             grapplingHook.StopGrapple();
         }
 
+        // Denna kod letar upp ALLA fallande plattformar i banan (även de som är gömda/avstängda)
+        FallingPlatforms[] allPlatforms = FindObjectsByType<FallingPlatforms>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        // Gå igenom dem en och en och återställ dem
+        foreach (FallingPlatforms platform in allPlatforms)
+        {
+            platform.ResetPlatform();
+        }
+
         transform.position = RespawnPoint.position;
         rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0f;

@@ -8,7 +8,7 @@ public class DeathCounter : MonoBehaviour
     private LevelStats ls;
     private int DeathC;
     private int lastDisplayedDeaths = -1;
-
+    
 
     void Start()
     {

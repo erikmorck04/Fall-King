@@ -240,7 +240,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 694864889}
+      - m_Target: {fileID: 1118416172}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: ToSelectLevel
         m_Mode: 1
@@ -290,11 +290,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128423311}
   m_CullTransparentMesh: 1
---- !u!1 &217138956 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3371454689860889489, guid: 1e710b130fbad8d4a978212d069b96b9, type: 3}
-  m_PrefabInstance: {fileID: 3899829243189823411}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &458408927
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,32 +505,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 626451121}
   m_CullTransparentMesh: 1
---- !u!114 &694864889 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1794539627928260905, guid: 1e710b130fbad8d4a978212d069b96b9, type: 3}
-  m_PrefabInstance: {fileID: 3899829243189823411}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 217138956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e557ead109545746b6ada5d1cc99941, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &694864895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 217138956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdac330b8ead73042bf6e93e7925a30a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DeathPanel: {fileID: 1260623665}
-  player: {fileID: 1955413235}
-  respawnPoint: {fileID: 2046670175}
 --- !u!1 &708860496
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,7 +724,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 694864889}
+      - m_Target: {fileID: 1118416172}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -1235,7 +1204,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 694864895}
+      - m_Target: {fileID: 1118416171}
         m_TargetAssemblyTypeName: DeathScreen, Assembly-CSharp
         m_MethodName: RespawnAndRestart
         m_Mode: 1
@@ -1497,7 +1466,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 694864889}
+      - m_Target: {fileID: 1118416172}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: ResumeGame
         m_Mode: 1
@@ -1557,8 +1526,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1118416169}
   - component: {fileID: 1118416170}
+  - component: {fileID: 1118416172}
+  - component: {fileID: 1118416171}
   m_Layer: 0
-  m_Name: HealthManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1593,6 +1564,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbar: {fileID: 1155272610}
   health: {fileID: 1762969082106405823}
+--- !u!114 &1118416171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118416167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdac330b8ead73042bf6e93e7925a30a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeathPanel: {fileID: 1260623665}
+  player: {fileID: 1955413235}
+  respawnPoint: {fileID: 2046670175}
+--- !u!114 &1118416172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118416167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e557ead109545746b6ada5d1cc99941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PausePanel: {fileID: 1220854970}
 --- !u!1 &1155272608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1949,11 +1948,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1351271400}
   m_CullTransparentMesh: 1
---- !u!4 &1380729767 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5869091855842808125, guid: 47e11ff8e2b487348a1ae6bddaa7eed5, type: 3}
-  m_PrefabInstance: {fileID: 6469425786284153144}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1465877490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2116,9 +2110,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1325723019710240887, guid: a14129d9925f732449b80ec820c1f533, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2040990223}
-    - targetCorrespondingSourceObject: {fileID: 1325723019710240887, guid: a14129d9925f732449b80ec820c1f533, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1380729767}
     - targetCorrespondingSourceObject: {fileID: 4616780418124502965, guid: a14129d9925f732449b80ec820c1f533, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1945386151}
@@ -2708,7 +2699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4273fc706097f94b810585420412f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathText: {fileID: 0}
+  deathText: {fileID: 2040990225}
 --- !u!114 &2040990225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2896,7 +2887,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 694864889}
+      - m_Target: {fileID: 1118416172}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: BackToMainMenu
         m_Mode: 1
@@ -2964,7 +2955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  DeathScreen: {fileID: 694864895}
+  DeathScreen: {fileID: 1118416171}
 --- !u!1001 &3899829243189823411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3025,13 +3016,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1762969082106405813}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1794539627928260905, guid: 1e710b130fbad8d4a978212d069b96b9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3371454689860889489, guid: 1e710b130fbad8d4a978212d069b96b9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 694864895}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e710b130fbad8d4a978212d069b96b9, type: 3}
 --- !u!1001 &5550117733083943527
 PrefabInstance:
@@ -4236,15 +4225,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1220495158}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5869091855842808125, guid: 47e11ff8e2b487348a1ae6bddaa7eed5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -960.01
+      value: -0.010009766
       objectReference: {fileID: 0}
     - target: {fileID: 5869091855842808125, guid: 47e11ff8e2b487348a1ae6bddaa7eed5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -717.46
+      value: -177.46002
       objectReference: {fileID: 0}
     - target: {fileID: 5869091855842808125, guid: 47e11ff8e2b487348a1ae6bddaa7eed5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4347,6 +4336,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Square
       objectReference: {fileID: 0}
+    - target: {fileID: 3935294202096612457, guid: f75b7e1f18c33a14e9df0711e3d84f20, type: 3}
+      propertyPath: DeathScreen
+      value: 
+      objectReference: {fileID: 1118416171}
     - target: {fileID: 4463102640423455916, guid: f75b7e1f18c33a14e9df0711e3d84f20, type: 3}
       propertyPath: respawnPoint
       value: 
@@ -4423,7 +4416,8 @@ PrefabInstance:
       propertyPath: timerText
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3935294202096612457, guid: f75b7e1f18c33a14e9df0711e3d84f20, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -4501,3 +4495,4 @@ SceneRoots:
   - {fileID: 952238135}
   - {fileID: 1465877490}
   - {fileID: 1118416169}
+  - {fileID: 6469425786284153144}

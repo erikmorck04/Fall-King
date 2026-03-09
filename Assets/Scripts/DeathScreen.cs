@@ -43,7 +43,8 @@ public class DeathScreen : MonoBehaviour
     {
         if (LevelStats.Instance != null)
             LevelStats.Instance.AddDeath();
-
+        Debug.Log("Add death test");
+        
         if (grapplingHook != null) grapplingHook.StopGrapple();
 
         FallingPlatforms[] allPlatforms = FindObjectsByType<FallingPlatforms>(FindObjectsInactive.Include, FindObjectsSortMode.None);

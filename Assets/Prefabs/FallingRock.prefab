@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7739248485372193633}
   m_Layer: 0
   m_Name: FallingRock
-  m_TagString: Untagged
+  m_TagString: KillPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

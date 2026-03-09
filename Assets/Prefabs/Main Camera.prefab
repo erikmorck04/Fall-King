@@ -153,6 +153,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   yOffset: -2
+  xOffset: 0
+  isHorizontal: 0
+  lockedXPosition: 0
+  lockedYPosition: 0
   smoothSpeed: 15
 --- !u!114 &1794539627928260905
 MonoBehaviour:
@@ -166,4 +170,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e557ead109545746b6ada5d1cc99941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PausePanel: {fileID: 0}
+  PausePanel: {fileID: 3371454689860889489}

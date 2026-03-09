@@ -1819,7 +1819,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1957450618098691682, guid: 8911206cd7ae648d2a69711056ffe526, type: 3}
         m_TargetAssemblyTypeName: DeathScreen, Assembly-CSharp
         m_MethodName: RespawnAndRestart
         m_Mode: 1

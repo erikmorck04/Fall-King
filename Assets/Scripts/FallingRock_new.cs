@@ -7,13 +7,14 @@ public class FallingRock_new : MonoBehaviour
     [Header("Rotation")]
     public float minRotationSpeed = -150f; // Minusvärden snurrar åt ena hållet...
     public float maxRotationSpeed = 150f;  // ...och plusvärden åt andra hållet!
-
+    private Health health;
     private Rigidbody2D rb;
 
     void Start()
     {
         Destroy(gameObject, lifetime);
 
+        health = GetComponent<Health>();
         rb = GetComponent<Rigidbody2D>();
 
         if (rb != null)
@@ -33,7 +34,7 @@ public class FallingRock_new : MonoBehaviour
             // Om vi hittade skriptet, säg åt spelaren att dö!
             if (playerScript != null)
             {
-                playerScript.Die();
+                health.Killplayer();
             }
 
           

@@ -220,6 +220,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1065281038886516361, guid: c552fe40217504b84aa35ac7145e14c4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 3409190496535816926, guid: c552fe40217504b84aa35ac7145e14c4, type: 3}
       propertyPath: respawnPoint
       value: 

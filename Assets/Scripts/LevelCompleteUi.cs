@@ -21,7 +21,7 @@ public class LevelCompleteUI : MonoBehaviour
 
         float elapsed = LevelStats.Instance.GetElapsedTime();
         int minutes = Mathf.FloorToInt(elapsed / 60f);
-        int seconds = Mathf.FloorToInt(elapsed % 60f);
+        int seconds = Mathf.FloorToInt(elapsed % 60f);x§x§§
 
         timeText.text = $"Time: {minutes:00}:{seconds:00}";
         deathText.text = $"Deaths: {LevelStats.Instance.deathCount}";

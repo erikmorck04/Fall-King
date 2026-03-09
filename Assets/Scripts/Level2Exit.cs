@@ -6,6 +6,7 @@ public class Level2_Exit : MonoBehaviour
 {
     // Skriv in exakt det namn du döpte din nästa scen till
     public string nextLevelName = "level3_scene";
+    public LevelCompleteUI levelCompleteUI;
 
     // Denna funktion körs automatiskt när något nuddar vår "Trigger"
     void OnTriggerEnter2D(Collider2D collision)
@@ -14,7 +15,7 @@ public class Level2_Exit : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Spelaren klarade banan! Laddar nästa...");
-            SceneManager.LoadScene(nextLevelName);
+            levelCompleteUI.Show(nextLevelName);
         }
     }
 }

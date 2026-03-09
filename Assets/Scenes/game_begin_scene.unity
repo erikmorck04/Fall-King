@@ -262,6 +262,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c552fe40217504b84aa35ac7145e14c4, type: 3}
+--- !u!114 &333677983 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3373024820186805675, guid: c552fe40217504b84aa35ac7145e14c4, type: 3}
+  m_PrefabInstance: {fileID: 333677982}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 849325ea4054488fba277f84f54960cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &891638669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -793,7 +804,7 @@ PrefabInstance:
     - target: {fileID: 1439727147697047742, guid: b2825b8ac0eeb3747940e1b6b00faf17, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 333677983}
     - target: {fileID: 1439727147697047742, guid: b2825b8ac0eeb3747940e1b6b00faf17, type: 3}
       propertyPath: cameraShake
       value: 

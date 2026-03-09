@@ -7,27 +7,30 @@ public class GrapplingHook : MonoBehaviour
     public LineRenderer lineRenderer;
 
     private PlayerMovement playerMovement;
+    private PlayerAudio playerSound;
 
     [Header("Grapple Settings")]
     public float pullSpeed = 30f; // Hur snabbt du dras mot kroken
-    public float jumpCancelForce = 15f; // Kraften när du hoppar ur kroken
+    public float jumpCancelForce = 15f; // Kraften nï¿½r du hoppar ur kroken
 
     public GameObject projectilePrefab;
     private GameObject currentProjectile;
 
-    private bool isGrappling = false; // Kroken är skjuten
+    private bool isGrappling = false; // Kroken ï¿½r skjuten
     private bool isPulling = false;   // Spelaren dras mot kroken just nu
-    private bool isStuckToWall = false; // Håller koll på om vi hänger kvar
+    private bool isStuckToWall = false; // Hï¿½ller koll pï¿½ om vi hï¿½nger kvar
     private Vector2 pullTarget;
 
     private Rigidbody2D rb;
-    private float defaultGravity; // För att spara din vanliga gravitation
+    private float defaultGravity; // Fï¿½r att spara din vanliga gravitation
+    
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         defaultGravity = rb.gravityScale; // Spara original-gravitationen
         playerMovement = GetComponent<PlayerMovement>();
+        playerSound = GetComponent<PlayerAudio>();
 
         lineRenderer.positionCount = 2;
         lineRenderer.enabled = false;
@@ -35,12 +38,14 @@ public class GrapplingHook : MonoBehaviour
 
     void Update()
     {
-        // 1. Hantera Input för att skjuta/släppa kroken
+        // 1. Hantera Input fï¿½r att skjuta/slï¿½ppa kroken
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (!isGrappling)
             {
                 StartGrapple();
+                
+                
             }
             else
             {
@@ -48,7 +53,7 @@ public class GrapplingHook : MonoBehaviour
             }
         }
 
-        // 2. Hantera Input för att hoppa ur kroken när som helst
+        // 2. Hantera Input fï¿½r att hoppa ur kroken nï¿½r som helst
         if ((isPulling || isStuckToWall) && Input.GetKeyDown(KeyCode.Space))
         {
             JumpOut();
@@ -67,7 +72,7 @@ public class GrapplingHook : MonoBehaviour
             else if (isPulling)
             {
                 lineRenderer.SetPosition(0, transform.position);
-                // Om projektilen är borta men vi fortfarande dras, rita till target
+                // Om projektilen ï¿½r borta men vi fortfarande dras, rita till target
                 lineRenderer.SetPosition(1, pullTarget);
             }
             else
@@ -80,16 +85,16 @@ public class GrapplingHook : MonoBehaviour
 
     void FixedUpdate()
     {
-        // 4. Själva drag-logiken
+        // 4. Sjï¿½lva drag-logiken
         if (isPulling)
         {
-            // Räkna ut riktningen från spelaren till kroken
+            // Rï¿½kna ut riktningen frï¿½n spelaren till kroken
             Vector2 direction = (pullTarget - (Vector2)transform.position).normalized;
 
-            // Sätt hastigheten rakt mot kroken
+            // Sï¿½tt hastigheten rakt mot kroken
             rb.linearVelocity = direction * pullSpeed;
 
-            // Om vi är tillräckligt nära kroken, stanna dragningen
+            // Om vi ï¿½r tillrï¿½ckligt nï¿½ra kroken, stanna dragningen
             if (Vector2.Distance(transform.position, pullTarget) < 1f)
             {
                 StickToWall();
@@ -97,19 +102,19 @@ public class GrapplingHook : MonoBehaviour
         }
     }
 
-    // Kallas när vi når väggen
+    // Kallas nï¿½r vi nï¿½r vï¿½ggen
     void StickToWall()
     {
         isPulling = false;
         isStuckToWall = true;
 
-        rb.linearVelocity = Vector2.zero; // Stoppa all rörelse
-        rb.gravityScale = 0f;            // Behåll gravitationen på noll så vi inte faller
+        rb.linearVelocity = Vector2.zero; // Stoppa all rï¿½relse
+        rb.gravityScale = 0f;            // Behï¿½ll gravitationen pï¿½ noll sï¿½ vi inte faller
 
-        // Vi behåller playerMovement.enabled = false här så man inte kan "gå" på väggen
+        // Vi behï¿½ller playerMovement.enabled = false hï¿½r sï¿½ man inte kan "gï¿½" pï¿½ vï¿½ggen
     }
 
-    // Uppdatera denna så den anropar StickToWall istället för StopGrapple
+    // Uppdatera denna sï¿½ den anropar StickToWall istï¿½llet fï¿½r StopGrapple
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (isPulling)
@@ -131,9 +136,10 @@ public class GrapplingHook : MonoBehaviour
         hookScript.spawner = this;
 
         lineRenderer.enabled = true;
+        playerSound.PlayAttack();
     }
 
-    // Kallas från HookScript när den träffar en vägg
+    // Kallas frï¿½n HookScript nï¿½r den trï¿½ffar en vï¿½gg
     public void StartPull(Vector2 targetPosition)
     {
         isPulling = true;
@@ -141,7 +147,7 @@ public class GrapplingHook : MonoBehaviour
 
         if (playerMovement != null) playerMovement.enabled = false;
 
-        // Stäng av gravitation så vi dras spikrakt, nollställ nuvarande hastighet
+        // Stï¿½ng av gravitation sï¿½ vi dras spikrakt, nollstï¿½ll nuvarande hastighet
         rb.gravityScale = 0f;
         rb.linearVelocity = Vector2.zero;
     }
@@ -151,13 +157,13 @@ public class GrapplingHook : MonoBehaviour
         isGrappling = false;
         isPulling = false;
         lineRenderer.enabled = false;
-        isStuckToWall = false; // Nollställ klistret
+        isStuckToWall = false; // Nollstï¿½ll klistret
 
         if (playerMovement != null) playerMovement.enabled = true;
-        // Återställ gravitationen
+        // ï¿½terstï¿½ll gravitationen
         if (rb != null) rb.gravityScale = defaultGravity;
 
-        // Förstör projektilen om den finns kvar
+        // Fï¿½rstï¿½r projektilen om den finns kvar
         if (currentProjectile != null)
         {
             Destroy(currentProjectile);
@@ -166,16 +172,17 @@ public class GrapplingHook : MonoBehaviour
 
     void JumpOut()
     {
-        // Spara jumpCancelForce i en temporär variabel innan vi nollställer allt
+        // Spara jumpCancelForce i en temporï¿½r variabel innan vi nollstï¿½ller allt
         float force = jumpCancelForce;
 
         StopGrapple(); // Avbryt kroken
+        playerSound.PlayJump(); // Spela hopp-ljudet
 
-        // Ge spelaren en boost uppåt (eller i input-riktningen) för att simulera hoppet
+        // Ge spelaren en boost uppï¿½t (eller i input-riktningen) fï¿½r att simulera hoppet
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpCancelForce);
     }
 
-    // Din getDir() metod behålls oförändrad här under (jag kortar ner den för läsbarhet, men använd din egen)
+    // Din getDir() metod behï¿½lls ofï¿½rï¿½ndrad hï¿½r under (jag kortar ner den fï¿½r lï¿½sbarhet, men anvï¿½nd din egen)
     Vector2 getDir()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");

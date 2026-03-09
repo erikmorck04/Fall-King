@@ -11,11 +11,18 @@ public class HookScript : MonoBehaviour
     private Vector2 start;
     private Rigidbody2D rb;
     private bool hasHit = false;
-
+    private GameObject player;
+    private PlayerAudio playerSound;
+    
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         start = transform.position;
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerSound = player.GetComponent<PlayerAudio>();
+        }
     }
 
     public void SetDirection(Vector2 dir)
@@ -48,7 +55,8 @@ public class HookScript : MonoBehaviour
         // if ((grappleableMask.value & (1 << collision.gameObject.layer)) > 0)
 
         hasHit = true;
-        rb.linearVelocity = Vector2.zero; // Stanna kroken
+        rb.linearVelocity = Vector2.zero; // Stanna kroken// Spela ljudet n�r kroken tr�ffar
+        playerSound.PlayDamage();
 
         // S�g till spelaren att b�rja dras mot denna position
         if (spawner != null)

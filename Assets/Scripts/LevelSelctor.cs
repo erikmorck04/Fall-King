@@ -17,7 +17,7 @@ public class LevelSelctor : MonoBehaviour
     }
     public void LoadLevel1()
     {
-        SceneManager.LoadSceneAsync("scene");
+        SceneManager.LoadSceneAsync("game_begin_scene");
     }
     public void LoadLevel2()
     {

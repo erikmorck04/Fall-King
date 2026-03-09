@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isFacingRight = true;
 
     private Animator anim;
+    private PlayerAudio playerAudio;
 
 
 
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Hämtar komponenten Animator från din Player
         anim = GetComponent<Animator>();
+        playerAudio = GetComponent<PlayerAudio>();
     }
 
     void Update()
@@ -55,8 +57,8 @@ public class PlayerMovement : MonoBehaviour
         }
        
         if(Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            AudioManager.Instance.Play("Jump");
+        {   
+            playerAudio.PlayJump();
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
         }
         if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0f)

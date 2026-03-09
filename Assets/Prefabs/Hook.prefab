@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: -1616584750431233200}
   - component: {fileID: 2911864163321908514}
   - component: {fileID: 2566498818175235841}
+  - component: {fileID: 7539563141122372173}
   m_Layer: 9
   m_Name: Hook
   m_TagString: Untagged
@@ -210,3 +211,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &7539563141122372173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6538899707445515032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 743b4285165aa4c1bbb7aca586c2e02c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hookSound: {fileID: 8300000, guid: 7e5279d7f9d092444bee3ec4f783f13f, type: 3}

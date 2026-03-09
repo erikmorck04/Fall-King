@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 851775220918553722}
   - component: {fileID: 6771794405617656735}
   - component: {fileID: 4463102640423455916}
+  - component: {fileID: 3935294202096612457}
   m_Layer: 0
   m_Name: Square
   m_TagString: Player
@@ -265,7 +266,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &4100526114607913339
@@ -411,6 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849325ea4054488fba277f84f54960cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 1
   isFacingRight: 1
   rb: {fileID: 4100526114607913339}
   groundCheck: {fileID: 909416800483696490}
@@ -429,8 +431,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b952e7ffcf3fe02448695037926743ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RespawnPoint: {fileID: 0}
   threshold: 34
+  damageMultiplier: 7
 --- !u!114 &4463102640423455916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,6 +447,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 0}
   player: {fileID: 3673970205507290232}
+--- !u!114 &3935294202096612457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3673970205507290232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da40b2fd6220a4349898f25590ef2d94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  DeathScreen: {fileID: 0}
 --- !u!1 &8791992326338848564
 GameObject:
   m_ObjectHideFlags: 0

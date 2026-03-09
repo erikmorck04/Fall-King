@@ -7,6 +7,13 @@ public class CameraFollow : MonoBehaviour
     // Hur långt under spelaren kamerans mittpunkt ska vara. 
     // Ett minusvärde (-3 till -5) är perfekt här, det flyttar upp gubben på skärmen!
     public float yOffset = -4f;
+    public float xOffset = 0f;
+
+    [Header("Lägen")]
+    public bool isHorizontal = false; // False = Vertikal, True = Horisontell
+
+    public float lockedXPosition = 0f; // Används när vi faller neråt
+    public float lockedYPosition = 0f; // Används när vi springer ut horisontellt
 
     // Hur mjukt kameran följer efter gubben när han faller eller studsar
     public float smoothSpeed = 15f;
@@ -15,14 +22,22 @@ public class CameraFollow : MonoBehaviour
     {
         if (player != null)
         {
-            // 1. Räkna ut exakt var kameran BÖR vara på Y-axeln (gubbens position minus vår offset)
-            float targetY = player.position.y + yOffset;
 
-            // 2. Glid mjukt från kamerans nuvarande höjd till den nya höjden (targetY)
-            float smoothedY = Mathf.Lerp(transform.position.y, targetY, smoothSpeed * Time.unscaledDeltaTime);
+            Vector3 targetPosition;
+            if (isHorizontal)
+            {
+                // HORISONTELLT LÄGE: Följ spelarens X, lås fast Y
+                targetPosition = new Vector3(player.position.x + xOffset, lockedYPosition, transform.position.z);
+            }
+            else
+            {
+                // VERTIKALT LÄGE: Lås fast X, följ spelarens Y
+                targetPosition = new Vector3(lockedXPosition, player.position.y + yOffset, transform.position.z);
+            }
 
-            // 3. Sätt positionen! Vi behåller kamerans egen X (låst i sidled) och uppdaterar bara Y.
-            transform.position = new Vector3(transform.position.x, smoothedY, transform.position.z);
+            // Glid mjukt från kamerans nuvarande position till den nya targetPosition
+            // (Vi använder Vector3.Lerp nu istället för Mathf.Lerp, så att både X och Y rör sig mjukt när vi byter läge!)
+            transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed * Time.unscaledDeltaTime);
         }
     }
 }

@@ -5,42 +5,38 @@ public class CollisionWithObject : MonoBehaviour
     [SerializeField] private Transform respawnPoint;
     [SerializeField] private GameObject player;
 
-
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     void OnCollisionEnter2D(Collision2D collision)
     {
-
-        
+        // Om spelaren nuddar spikar eller annat farligt
         if (collision.gameObject.CompareTag("KillPlayer"))
         {
-            if (LevelStats.Instance != null)
-                LevelStats.Instance.AddDeath();
+            Die(); // Anropa den nya funktionen!
+        }
+    }
 
-            // Denna kod letar upp ALLA fallande plattformar i banan (även de som är gömda/avstängda)
-            FallingPlatforms[] allPlatforms = FindObjectsByType<FallingPlatforms>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+    // --- NY FUNKTION SOM KAN ANROPAS FRÅN ANDRA SKRIPT ---
+    public void Die()
+    {
+        // 1. Lägg till death-stats
+        if (LevelStats.Instance != null)
+            LevelStats.Instance.AddDeath();
 
-            // Gå igenom dem en och en och återställ dem
-            foreach (FallingPlatforms platform in allPlatforms)
-            {
-                platform.ResetPlatform();
-            }
+        // 2. Återställ alla plattformar
+        FallingPlatforms[] allPlatforms = FindObjectsByType<FallingPlatforms>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (FallingPlatforms platform in allPlatforms)
+        {
+            platform.ResetPlatform();
+        }
 
-            player.transform.position = respawnPoint.position;
-            Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.linearVelocity = Vector2.zero;
-                rb.angularVelocity = 0f;
-            }
+        // 3. Flytta spelaren
+        player.transform.position = respawnPoint.position;
+
+        // 4. Stoppa spelarens fart så man inte fortsätter falla efter respawn
+        Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
         }
     }
 }

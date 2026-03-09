@@ -28,16 +28,16 @@ public class FallingRock_new : MonoBehaviour
         // Kollar om stenen nuddar spelaren
         if (collision.CompareTag("Player"))
         {
-            // Leta upp ditt CollisionWithObject-skript på spelaren
-            CollisionWithObject playerScript = collision.GetComponent<CollisionWithObject>();
+            // HÄR är hemligheten! Vi hämtar Health-skriptet från objektet vi nyss krockade med (spelaren)
+            Health playerHealth = collision.GetComponent<Health>();
 
-            // Om vi hittade skriptet, säg åt spelaren att dö!
-            if (playerScript != null)
+            // Om vi hittade Health-skriptet på spelaren, säg åt spelaren att dö!
+            if (playerHealth != null)
             {
-                health.Killplayer();
+                playerHealth.Killplayer();
             }
 
-          
+
 
             // Stenen går sönder när den träffar riddarens huvud
             Destroy(gameObject);

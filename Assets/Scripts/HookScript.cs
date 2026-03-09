@@ -43,7 +43,7 @@ public class HookScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player")) return;
 
         if (hasHit) return; // F�rhindra att den triggas flera g�nger
-
+        AudioManager.Instance.Play("Grp_Hit");
         // Dubbelkolla g�rna s� att den bara fastnar p� "Grappleable" v�ggar
         // if ((grappleableMask.value & (1 << collision.gameObject.layer)) > 0)
 

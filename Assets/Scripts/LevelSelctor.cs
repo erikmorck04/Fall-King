@@ -17,10 +17,15 @@ public class LevelSelctor : MonoBehaviour
     }
     public void LoadLevel1()
     {
-        SceneManager.LoadSceneAsync("scene");
+        SceneManager.LoadSceneAsync("game_begin_scene");
     }
     public void LoadLevel2()
     {
         SceneManager.LoadSceneAsync("level2_scene");
+    }
+    public void LoadLevel3()
+    {
+        SceneManager.LoadSceneAsync("level3_scene");
+
     }
 }

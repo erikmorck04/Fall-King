@@ -499,6 +499,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7016035741561244923, guid: c552fe40217504b84aa35ac7145e14c4, type: 3}
   m_PrefabInstance: {fileID: 1941713628}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1941713630 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8343457086214603815, guid: c552fe40217504b84aa35ac7145e14c4, type: 3}
+  m_PrefabInstance: {fileID: 1941713628}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111553280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da40b2fd6220a4349898f25590ef2d94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2046670175 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 282533022589289186, guid: ebdf40e05113c5245b426911d7c69483, type: 3}
@@ -532,7 +543,7 @@ PrefabInstance:
     - target: {fileID: 3301466843171702607, guid: 8911206cd7ae648d2a69711056ffe526, type: 3}
       propertyPath: health
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1941713630}
     - target: {fileID: 3301466843171702607, guid: 8911206cd7ae648d2a69711056ffe526, type: 3}
       propertyPath: healthbar
       value: 

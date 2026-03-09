@@ -27,11 +27,11 @@ public class VerticalParallax : MonoBehaviour
     {
         if (isHorizontal)
         {
-            float dist = (cam.position.x * parallaxFactor);
+            float temp = cam.position.x * (1 - parallaxFactor);
+            float dist = cam.position.x * parallaxFactor;
             transform.position = new Vector3(startPos.x + dist, transform.position.y + yOffset, transform.position.z);
 
             // Loopa i X-led
-            float temp = (cam.position.x * (1 - parallaxFactor));
             if (temp > startPos.x + length) startPos.x += length;
             else if (temp < startPos.x - length) startPos.x -= length;
         }

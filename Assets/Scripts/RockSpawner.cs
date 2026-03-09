@@ -9,8 +9,11 @@ public class RockSpawner : MonoBehaviour
 
     private float timer;
 
+    public bool isSpawning = true;
+
     void Update()
     {
+        if (!isSpawning) return;
         timer += Time.deltaTime;
 
         if (timer >= spawnInterval)
@@ -30,6 +33,17 @@ public class RockSpawner : MonoBehaviour
 
         // Skapa stenen!
         Instantiate(rockPrefab, spawnPosition, Quaternion.identity);
+    }
+
+    public void StopSpawning()
+    {
+        isSpawning = false;
+        Debug.Log("Stenkastaren stängdes av via kod!");
+    }
+
+    public void StartSpawning()
+    {
+        isSpawning = true;
     }
 
     // Detta ritar ut en röd linje i Editorn så du ser exakt var stenarna kan spawna

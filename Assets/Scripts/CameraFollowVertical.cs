@@ -12,6 +12,8 @@ public class CameraFollow : MonoBehaviour
     [Header("Lägen")]
     public bool isHorizontal = false; // False = Vertikal, True = Horisontell
 
+    [HideInInspector] public Vector3 shakeOffset;
+
     public float lockedXPosition = 0f; // Används när vi faller neråt
     public float lockedYPosition = 0f; // Används när vi springer ut horisontellt
 
@@ -37,7 +39,7 @@ public class CameraFollow : MonoBehaviour
 
             // Glid mjukt från kamerans nuvarande position till den nya targetPosition
             // (Vi använder Vector3.Lerp nu istället för Mathf.Lerp, så att både X och Y rör sig mjukt när vi byter läge!)
-            transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed * Time.unscaledDeltaTime);
+            transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed * Time.unscaledDeltaTime) + shakeOffset;
         }
     }
 }

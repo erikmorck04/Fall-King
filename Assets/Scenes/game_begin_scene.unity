@@ -119,54 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &132658014
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 132658016}
-  - component: {fileID: 132658015}
-  m_Layer: 0
-  m_Name: CutsceneManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &132658015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 132658014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec7523834de7b2548908380adb0a34a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 608654074}
-  cameraShake: {fileID: 2087532980}
-  shakeDuration: 4
-  shakeIntensity: 0.15
---- !u!4 &132658016
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 132658014}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.34213424, y: 6.2101293, z: 0.032171194}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &146950177
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,6 +809,71 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27dce020de51e3d41a995e19f819eb46, type: 3}
+--- !u!1001 &7587391819858707312
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1364835839809103450, guid: b2825b8ac0eeb3747940e1b6b00faf17, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.34213424
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364835839809103450, guid: b2825b8ac0eeb3747940e1b6b00faf17, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.2101293
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364835839809103450, guid: b2825b8ac0eeb3747940e1b6b00faf17, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.032171194
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364835839809103450, guid: b2825b8ac0eeb3747940e1b6b00faf17, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364835839809103450, guid: b2825b8ac0eeb3747940e1b6b00faf17, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364835839809103450, guid: b2825b8ac0eeb3747940e1b6b00faf17, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364835839809103450, guid: b2825b8ac0eeb3747940e1b6b00faf17, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364835839809103450, guid: b2825b8ac0eeb3747940e1b6b00faf17, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364835839809103450, guid: b2825b8ac0eeb3747940e1b6b00faf17, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364835839809103450, guid: b2825b8ac0eeb3747940e1b6b00faf17, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439727147697047742, guid: b2825b8ac0eeb3747940e1b6b00faf17, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 608654074}
+    - target: {fileID: 1439727147697047742, guid: b2825b8ac0eeb3747940e1b6b00faf17, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 2087532980}
+    - target: {fileID: 2343137185825925223, guid: b2825b8ac0eeb3747940e1b6b00faf17, type: 3}
+      propertyPath: m_Name
+      value: CutsceneManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b2825b8ac0eeb3747940e1b6b00faf17, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -866,7 +883,7 @@ SceneRoots:
   - {fileID: 3813423239413089469}
   - {fileID: 159110448}
   - {fileID: 146950179}
-  - {fileID: 132658016}
+  - {fileID: 7587391819858707312}
   - {fileID: 2021244423}
   - {fileID: 1755250021}
   - {fileID: 891638669}

@@ -11,7 +11,7 @@ public class LevelEnder : MonoBehaviour
 
     [Header("Inställningar")]
     public string nextSceneName = "Level2"; // Skriv in exakt namn på nästa bana
-    public float shakeDuration = 2f; // Hur länge kameran skakar
+    public float shakeDuration = 3f; // Hur länge kameran skakar
     public float shakeIntensity = 0.3f; // Hur kraftigt den skakar
     public float fadeSpeed = 1f; // Hur snabbt den fadar till svart
 
@@ -55,7 +55,7 @@ public class LevelEnder : MonoBehaviour
         }
 
         // Återställ kameran när skakningen är klar
-        cameraScript.shakeOffset = Vector3.zero;
+        
 
         // --- 3. FADA TILL SVART ---
         fadeImage.gameObject.SetActive(true);
@@ -69,10 +69,11 @@ public class LevelEnder : MonoBehaviour
             yield return null; // Vänta till nästa frame
         }
 
+        cameraScript.shakeOffset = Vector3.zero;
         // Vänta en halv sekund extra när skärmen är helt svart för dramatisk effekt
         yield return new WaitForSeconds(0.5f);
 
         // --- 4. BYT BANA ---
-        SceneManager.LoadScene(nextSceneName);
+        SceneManager.LoadScene("FinishGameScene");
     }
 }

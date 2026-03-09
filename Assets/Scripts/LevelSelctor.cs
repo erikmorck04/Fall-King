@@ -23,4 +23,8 @@ public class LevelSelctor : MonoBehaviour
     {
         SceneManager.LoadSceneAsync("level2_scene");
     }
+    public void LoadLevel3()
+    {
+        SceneManager.LoadSceneAsync("level3_scene");
+    }
 }

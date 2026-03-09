@@ -46,7 +46,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         isPaused = false;
 
-        SceneManager.LoadSceneAsync(0);
+        SceneManager.LoadSceneAsync("MainMenu");
     }
 
     public void QuitGame()
@@ -60,6 +60,6 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         isPaused = false;
 
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadSceneAsync("LevelSelecter");
     }
 }
